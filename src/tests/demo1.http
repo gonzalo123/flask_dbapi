@@ -1,0 +1,28 @@
+### health
+
+POST http://localhost:5000/example/
+Authorization: Bearer {{$BEARER}}
+
+### Default call
+POST http://localhost:5000/example/foo
+Authorization: Bearer {{$BEARER}}
+Content-Type: application/json
+
+{
+  "email": "gonzalo123@gmail.com",
+  "name": "Gonzalo"
+}
+
+
+### Call with database access
+POST http://localhost:5000/example/bar
+Authorization: Bearer {{$BEARER}}
+Content-Type: application/json
+
+{
+  "email": "gonzalo123@gmail.com",
+  "name": "Gonzalo"
+}
+
+
+

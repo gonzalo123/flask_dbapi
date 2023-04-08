@@ -1,0 +1,36 @@
+version: '3.6'
+
+x-logging: &logging
+  logging:
+    options:
+      max-size: 10m
+
+
+services:
+  api:
+    image: dbapi:production
+    <<: *logging
+    deploy:
+      replicas: 10
+      restart_policy:
+        condition: any
+    volumes:
+      - logs_volume:/src/logs
+    environment:
+      - ENVIRONMENT=production
+    command: /bin/bash ./start.sh
+
+  nginx:
+    image: nginx-dbapi:${VERSION}
+    deploy:
+      restart_policy:
+        condition: any
+    environment:
+      ENVIRON: ${VERSION}
+    ports:
+      - ${EXPOSED_PORT}:8000
+    depends_on:
+      - api
+
+volumes:
+  logs_volume:
