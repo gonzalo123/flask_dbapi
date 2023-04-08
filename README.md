@@ -1,4 +1,4 @@
-## Flask api skeleton to handle Postgresql operations
+## Flask api skeleton to handle PostgreSQL operations
 
 That`s a boilerplate for an api server using Flask. The idea is one api server to work as backend server to handle 
 all database operations. The api server will handle only POST requests and the input parameters will be on the body 
